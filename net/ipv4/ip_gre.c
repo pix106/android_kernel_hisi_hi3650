@@ -1255,6 +1255,10 @@ struct net_device *gretap_fb_dev_create(struct net *net, const char *name,
 	if (err)
 		goto out;
 
+	err = rtnl_configure_link(dev, NULL);
+	if (err < 0)
+		goto out;
+
 	return dev;
 out:
 	free_netdev(dev);
