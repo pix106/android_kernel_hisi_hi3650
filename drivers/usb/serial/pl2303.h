@@ -126,6 +126,7 @@
 /* Hewlett-Packard POS Pole Displays */
 #define HP_VENDOR_ID		0x03f0
 #define HP_LD960_PRODUCT_ID	0x0b39
+#define HP_LD381_PRODUCT_ID	0x0f7f
 #define HP_LCM220_PRODUCT_ID	0x3139
 #define HP_LCM960_PRODUCT_ID	0x3239
 #define HP_LD220_PRODUCT_ID	0x3524
