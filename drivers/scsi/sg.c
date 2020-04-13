@@ -854,8 +854,13 @@ sg_common_write(Sg_fd * sfp, Sg_request * srp,
 			(int) cmnd[0], (int) hp->cmd_len));
 
 	if (!sg_is_valid_dxfer(hp))
-	return -EINVAL;
+		return -EINVAL;
 	
+	if (hp->dxfer_len >= SZ_256M) {
+		sg_remove_request(sfp, srp);
+		return -EINVAL;
+	}
+
 	k = sg_start_req(srp, cmnd);
 	if (k) {
 		SCSI_LOG_TIMEOUT(1, sg_printk(KERN_INFO, sfp->parentdp,
