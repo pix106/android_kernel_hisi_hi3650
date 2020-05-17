@@ -888,9 +888,7 @@ static void dwc3_core_exit_mode(struct dwc3 *dwc)
 		/* do nothing */
 		break;
 	}
-
-	/* de-assert DRVVBUS for HOST and OTG mode */
-	dwc3_set_mode(dwc, DWC3_GCTL_PRTCAP_DEVICE);
+	dwc3_otg_exit(dwc);
 }
 
 #define DWC3_ALIGN_MASK		(16 - 1)
