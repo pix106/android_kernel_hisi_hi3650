@@ -1,7 +1,6 @@
 clean\.sh
 build\.sh
 patches/*
-net/wireguard/*
 arch/arm/boot/dts/include/dt-bindings/*
 arch/arm64/boot/dts/include/dt-bindings/*
 arch/cris/boot/dts/include/dt-bindings/*
