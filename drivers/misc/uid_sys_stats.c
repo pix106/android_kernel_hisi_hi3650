@@ -15,6 +15,7 @@
 
 #include <linux/atomic.h>
 #include <linux/err.h>
+#include <linux/futex.h>
 #include <linux/hashtable.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
@@ -953,7 +954,7 @@ static bool pid_group_leader_alive(const struct task_struct *task)
 	leader = task->group_leader;
 	if ((leader == NULL)
 		|| (leader->flags & PF_EXITING)
-		|| (leader->flags & PF_EXITPIDONE)
+		|| (leader->futex_state = FUTEX_STATE_DEAD)
 		|| (leader->flags & PF_SIGNALED)
 		|| (pid_get_task_state(leader) >= TASK_STATE_DEAD)) {
 		return false;
